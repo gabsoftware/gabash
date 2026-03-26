@@ -4,7 +4,7 @@ if (-not (Get-Command Register-GabashModule -ErrorAction SilentlyContinue)) {
 }
 Register-GabashModule "docker"
 
-#### fonctions pour travailler sur votre registry Docker perso
+#### functions for working with your personal Docker registry
 
 $YOUR_DOCKER_REGISTRY = "your.docker.registry:5000"
 

@@ -4,10 +4,10 @@ if (-not (Get-Command Register-GabashModule -ErrorAction SilentlyContinue)) {
 }
 Register-GabashModule "git"
 
-#### raccourcis pour travailler avec Git
+#### shortcuts for working with Git
 
 function cb {
-    Write-Host "Nettoyage des branches locales supprimées du serveur..."
+    Write-Host "Cleaning up local branches deleted from the server..."
     git fetch --prune | Out-Null
 
     # List local branches where upstream is [gone]
@@ -21,7 +21,7 @@ function cb {
         git branch -D $b
     }
 
-    Write-Host "Nettoyage terminé !"
+    Write-Host "Cleanup done!"
 }
 
 function gb {
@@ -70,7 +70,7 @@ function gmerge {
 
 function gc {
     if ($args.Count -eq 0) {
-        Write-Host "Paramètre manquant : répertoire(s), fichier(s) ou nom de branche"
+        Write-Host "Missing parameter: directory/directories, file(s), or branch name"
     } else {
         $hasExplicitSeparator = $args -contains "--"
         $hasPathArg = $false
@@ -103,7 +103,7 @@ function glog {
 
 function ga {
     if ($args.Count -eq 0) {
-        Write-Host "Paramètre manquant : répertoire(s) ou fichier(s)"
+        Write-Host "Missing parameter: directory/directories or file(s)"
     } else {
         git add @args
     }
@@ -111,7 +111,7 @@ function ga {
 
 function gcom {
     if ($args.Count -eq 0) {
-        Write-Host "Paramètre manquant : message"
+        Write-Host "Missing parameter: message"
     } else {
         git commit -m ($args -join " ")
     }
@@ -119,7 +119,7 @@ function gcom {
 
 function gr {
     if ($args.Count -eq 0) {
-        Write-Host "Paramètre manquant : répertoire(s) ou fichier(s)"
+        Write-Host "Missing parameter: directory/directories or file(s)"
     } else {
         git reset @args
     }
@@ -131,7 +131,7 @@ function gclean {
     )
 
     if ($Confirm -ne "--confirm") {
-        Write-Host "Refus: gclean requires --confirm"
+        Write-Host "Refused: gclean requires --confirm"
         return
     }
 
@@ -141,7 +141,7 @@ function gclean {
 
 function gx {
     if ($args.Count -eq 0) {
-        Write-Host "Paramètre manquant : répertoire(s) ou fichier(s)"
+        Write-Host "Missing parameter: directory/directories or file(s)"
     } else {
         git update-index --chmod=+x @args
     }

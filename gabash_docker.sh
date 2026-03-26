@@ -5,7 +5,7 @@ fi
 __gabash_register_module "docker"
 unset __GABASH_SCRIPT_DIR
 
-#### fonctions pour travailler sur votre registry Docker perso
+#### functions for working with your personal Docker registry
 
 YOUR_DOCKER_REGISTRY="your.docker.registry:5000"
 

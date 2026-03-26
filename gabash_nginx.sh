@@ -5,7 +5,7 @@ fi
 __gabash_register_module "nginx"
 unset __GABASH_SCRIPT_DIR
 
-#### raccourcis pour travailler avec nginx
+#### shortcuts for working with nginx
 
 function ngr() {
   sudo service nginx restart

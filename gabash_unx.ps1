@@ -6,7 +6,7 @@ Register-GabashModule "unx"
 
 $existingWhich = Get-Command -Name which -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($existingWhich) {
-    Write-Warning ("gabash_unx: chargement de 'which' ignoré car '" + $existingWhich.Name + "' existe déjà en tant que " + $existingWhich.CommandType + ".")
+    Write-Warning ("gabash_unx: loading 'which' skipped because '" + $existingWhich.Name + "' already exists as " + $existingWhich.CommandType + ".")
 } else {
 function which {
     $Arguments = @($args)
@@ -89,7 +89,7 @@ function which {
 
 $existingHead = Get-Command -Name head -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($existingHead) {
-    Write-Warning ("gabash_unx: chargement de 'head' ignoré car '" + $existingHead.Name + "' existe déjà en tant que " + $existingHead.CommandType + ".")
+    Write-Warning ("gabash_unx: loading 'head' skipped because '" + $existingHead.Name + "' already exists as " + $existingHead.CommandType + ".")
 } else {
 function head {
     $Arguments = @($args)
@@ -225,7 +225,7 @@ function head {
 
 $existingTail = Get-Command -Name tail -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($existingTail) {
-    Write-Warning ("gabash_unx: chargement de 'tail' ignore car '" + $existingTail.Name + "' existe deja en tant que " + $existingTail.CommandType + ".")
+    Write-Warning ("gabash_unx: loading 'tail' skipped because '" + $existingTail.Name + "' already exists as " + $existingTail.CommandType + ".")
 } else {
 function tail {
     $Arguments = @($args)
@@ -429,7 +429,7 @@ function tail {
 
 $existingGrep = Get-Command -Name grep -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($existingGrep) {
-    Write-Warning ("gabash_unx: chargement de 'grep' ignoré car '" + $existingGrep.Name + "' existe déjà en tant que " + $existingGrep.CommandType + ".")
+    Write-Warning ("gabash_unx: loading 'grep' skipped because '" + $existingGrep.Name + "' already exists as " + $existingGrep.CommandType + ".")
 } else {
 function grep {
     $Arguments = @($args)

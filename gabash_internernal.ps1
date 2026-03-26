@@ -31,22 +31,22 @@ function Get-GabashModuleCommands {
     switch ($ModuleName.ToLowerInvariant()) {
         "nginx" {
             return @(
-                [pscustomobject]@{ Command = "ngr"; Description = "Redemarre le service nginx" },
-                [pscustomobject]@{ Command = "ngt"; Description = "Verifie la configuration du service nginx (nginx -t)" }
+                [pscustomobject]@{ Command = "ngr"; Description = "Restarts the nginx service" },
+                [pscustomobject]@{ Command = "ngt"; Description = "Checks the nginx configuration (nginx -t)" }
             )
         }
         "git" {
             return @(
-                [pscustomobject]@{ Command = "cb"; Description = "Nettoyage des branches locales supprimees du serveur" },
+                [pscustomobject]@{ Command = "cb"; Description = "Cleans up local branches deleted from the server" },
                 [pscustomobject]@{ Command = "ga"; Description = "git add" },
                 [pscustomobject]@{ Command = "gb"; Description = "git branch" },
-                [pscustomobject]@{ Command = "gc"; Description = "git switch (branches) ou git restore (fichiers/chemins)" },
+                [pscustomobject]@{ Command = "gc"; Description = "git switch (branches) or git restore (files/paths)" },
                 [pscustomobject]@{ Command = "gd"; Description = "git diff" },
                 [pscustomobject]@{ Command = "gf"; Description = "git fetch --all" },
                 [pscustomobject]@{ Command = "gr"; Description = "git reset" },
                 [pscustomobject]@{ Command = "gs"; Description = "git status" },
                 [pscustomobject]@{ Command = "gcom"; Description = "git commit" },
-                [pscustomobject]@{ Command = "glog [number]"; Description = "git log -n [number] (optionnel ; par defaut 1)" },
+                [pscustomobject]@{ Command = "glog [number]"; Description = "git log -n [number] (optional; default 1)" },
                 [pscustomobject]@{ Command = "gpull"; Description = "git pull" },
                 [pscustomobject]@{ Command = "gpush"; Description = "git push" },
                 [pscustomobject]@{ Command = "gmerge"; Description = "git merge" },
@@ -56,34 +56,34 @@ function Get-GabashModuleCommands {
         }
         "docker" {
             return @(
-                [pscustomobject]@{ Command = "de <image_name> <tag>"; Description = "verifie si l'image existe dans le votre registry perso" },
-                [pscustomobject]@{ Command = "dt <image_name> <tag>"; Description = "docker tag (avec verification si le tag existe deja)" },
-                [pscustomobject]@{ Command = "dtl <image_name> <tag>"; Description = "tag l'image avec le tag donne puis avec latest" },
-                [pscustomobject]@{ Command = "dp <image_name> <tag>"; Description = "docker push (avec verification si le tag existe deja dans le registry)" },
-                [pscustomobject]@{ Command = "dpl <image_name> <tag>"; Description = "push le tag donne puis latest" },
-                [pscustomobject]@{ Command = "dpush <image_name> <tag>"; Description = "alias de dp" },
-                [pscustomobject]@{ Command = "dpull <image_name> [tag]"; Description = "docker pull (tag par defaut: latest)" },
-                [pscustomobject]@{ Command = "dl"; Description = "liste les images du votre registry perso" },
-                [pscustomobject]@{ Command = "dl <image_name>"; Description = "liste les tags de l'image" },
+                [pscustomobject]@{ Command = "de <image_name> <tag>"; Description = "checks if the image exists in your personal registry" },
+                [pscustomobject]@{ Command = "dt <image_name> <tag>"; Description = "docker tag (checks if tag already exists)" },
+                [pscustomobject]@{ Command = "dtl <image_name> <tag>"; Description = "tags the image with the given tag then with latest" },
+                [pscustomobject]@{ Command = "dp <image_name> <tag>"; Description = "docker push (checks if tag already exists in registry)" },
+                [pscustomobject]@{ Command = "dpl <image_name> <tag>"; Description = "pushes the given tag then latest" },
+                [pscustomobject]@{ Command = "dpush <image_name> <tag>"; Description = "alias for dp" },
+                [pscustomobject]@{ Command = "dpull <image_name> [tag]"; Description = "docker pull (default tag: latest)" },
+                [pscustomobject]@{ Command = "dl"; Description = "lists images in your personal registry" },
+                [pscustomobject]@{ Command = "dl <image_name>"; Description = "lists tags for the image" },
                 [pscustomobject]@{ Command = "dcb <service_name> [service_name2 ...]"; Description = "docker compose build" },
-                [pscustomobject]@{ Command = "dcbnc <service_name> [service_name2 ...]"; Description = "docker compose build avec --no-cache" },
+                [pscustomobject]@{ Command = "dcbnc <service_name> [service_name2 ...]"; Description = "docker compose build with --no-cache" },
                 [pscustomobject]@{ Command = "dcu <service_name> [service_name2 ...]"; Description = "docker compose up -d" },
                 [pscustomobject]@{ Command = "dcund <service_name> [service_name2 ...]"; Description = "docker compose up -d --no-deps" },
-                [pscustomobject]@{ Command = "dstop <service_name> [service_name2 ...]"; Description = "docker compose stop (docker stop si en dehors d'un projet avec compose)" },
+                [pscustomobject]@{ Command = "dstop <service_name> [service_name2 ...]"; Description = "docker compose stop (docker stop if outside a compose project)" },
                 [pscustomobject]@{ Command = "ddown <service_name> [service_name2 ...]"; Description = "docker compose down" },
-                [pscustomobject]@{ Command = "dkill <service_name> [service_name2 ...]"; Description = "docker compose kill (docker kill si en dehors d'un projet avec compose)" },
-                [pscustomobject]@{ Command = "dps [args ...]"; Description = "docker compose ps (docker ps si en dehors d'un projet avec compose)" },
+                [pscustomobject]@{ Command = "dkill <service_name> [service_name2 ...]"; Description = "docker compose kill (docker kill if outside a compose project)" },
+                [pscustomobject]@{ Command = "dps [args ...]"; Description = "docker compose ps (docker ps if outside a compose project)" },
                 [pscustomobject]@{ Command = "dlogs <container_name_or_id>"; Description = "docker logs --follow" },
                 [pscustomobject]@{ Command = "dexec <container_name_or_id> [args ...]"; Description = "docker exec" },
-                [pscustomobject]@{ Command = "dx <container_name_or_id> [args ...]"; Description = "alias de dexec" }
+                [pscustomobject]@{ Command = "dx <container_name_or_id> [args ...]"; Description = "alias for dexec" }
             )
         }
         "unx" {
             return @(
-                [pscustomobject]@{ Command = "which [-as] <command> [command ...]"; Description = "affiche le chemin d'une commande comme l'equivalent unix" },
-                [pscustomobject]@{ Command = "grep [-ivnrlcwxFEs] <pattern> [file ...]"; Description = "recherche un motif avec des options grep courantes" },
-                [pscustomobject]@{ Command = "head [-n N] [file ...]"; Description = "affiche les premieres lignes (10 par defaut)" },
-                [pscustomobject]@{ Command = "tail [-n N] [-f] [file ...]"; Description = "affiche les dernieres lignes et peut suivre avec -f" }
+                [pscustomobject]@{ Command = "which [-as] <command> [command ...]"; Description = "shows the path of a command like the unix equivalent" },
+                [pscustomobject]@{ Command = "grep [-ivnrlcwxFEs] <pattern> [file ...]"; Description = "searches for a pattern with common grep options" },
+                [pscustomobject]@{ Command = "head [-n N] [file ...]"; Description = "shows the first lines (10 by default)" },
+                [pscustomobject]@{ Command = "tail [-n N] [-f] [file ...]"; Description = "shows the last lines and can follow with -f" }
             )
         }
         default {
@@ -93,7 +93,7 @@ function Get-GabashModuleCommands {
 }
 
 function Show-GabashHelp {
-    Write-Output "gabash: fonctions pratiques pour bash et powershell."
+    Write-Output "gabash: handy functions for bash and powershell."
     Write-Output ""
     Write-Output "Usage: gabash --help [command] | gabash --version"
     Write-Output ""
@@ -134,7 +134,7 @@ function Show-GabashCommandHelp {
         Write-Output "Command: gabash"
         Write-Output "Module: internal"
         Write-Output "Usage: gabash --help [command] | gabash --version"
-        Write-Output "Description: commande interne gabash"
+        Write-Output "Description: gabash internal command"
         return
     }
 

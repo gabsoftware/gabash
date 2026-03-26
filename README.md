@@ -1,11 +1,11 @@
 # gabash
 
-Fonctions pratiques pour bash
+Handy shortcut functions for Bash and Powershell
 
 ## Installation
 
 ### Bash
-Pour avoir toutes les fonctions:
+To install all functions:
 
 ```
 cd ~
@@ -13,66 +13,66 @@ git clone git@github.com:gabsoftware/gabash.git
 printf '\nsource ~/gabash/gabash_all.sh\n' >> ~/.bashrc
 ```
 
-Pour n'installer qu'une famille de fonctions (par exemple git)
+To install only one family of functions (e.g. git):
 ```
 cd ~
 git clone git@github.com:gabsoftware/gabash.git
 printf '\nsource ~/gabash/gabash_git.sh\n' >> ~/.bashrc
 ```
 
-Puis fermer le WSL et le relancer.
+Then close WSL and reopen it.
 
 ### Powershell
-Pour Powershell if faut ajouter la ligne suivante dans votre fichier de profil:
-```. "C:\CheminVers\gabash\gabash_all.ps1"```
-ou
-```. "C:\CheminVers\gabash\gabash_git.ps1"```
-ou
-```. "C:\CheminVers\gabash\gabash_docker.ps1"```
-ou
-```. "C:\CheminVers\gabash\gabash_unx.ps1"```
+For Powershell, add the following line to your profile file:
+```. "C:\PathTo\gabash\gabash_all.ps1"```
+or
+```. "C:\PathTo\gabash\gabash_git.ps1"```
+or
+```. "C:\PathTo\gabash\gabash_docker.ps1"```
+or
+```. "C:\PathTo\gabash\gabash_unx.ps1"```
 
-Le fichier de profil peut être trouvé en tapant:
+The profile file path can be found by typing:
 ```$profile```
 
-Si aucun fichier de profil n'existe, vous pouvez en créer un avec :
+If no profile file exists, you can create one with:
 ```New-Item -Path $profile -ItemType File -Force```
 
-Puis vous pouvez modifier le fichier de profil avec :
+Then you can edit the profile file with:
 ```notepad $profile```
 
-## Mise à jour
+## Update
 
 ```
 cd ~/gabash && git pull
 ```
 
-Puis fermer le WSL et le relancer.
+Then close WSL and reopen it.
 
 
-## Liste des commandes
+## Command list
 
 ### Gabash
-- `gabash --help` : affiche une description de gabash et les commandes des modules charges
-- `gabash --help <command>` : affiche l'aide detaillee d'une commande (ex: `gabash --help gpull`)
-- `gabash --version` : affiche la version de gabash (ou `GABASH_VERSION` si defini)
-- autocompletion : `gabash <TAB>` et `gabash --help <TAB>` suggerent les options/commandes disponibles selon les modules charges
+- `gabash --help` : displays a description of gabash and the commands of loaded modules
+- `gabash --help <command>` : displays detailed help for a command (e.g. `gabash --help gpull`)
+- `gabash --version` : displays the gabash version (or `GABASH_VERSION` if defined)
+- autocompletion : `gabash <TAB>` and `gabash --help <TAB>` suggest available options/commands based on loaded modules
 
 ### Nginx
-- `ngr` : Redémarre le service nginx
-- `ngt` : Vérifie la configuration du service nginx (nginx -t)
+- `ngr` : Restarts the nginx service
+- `ngt` : Checks the nginx configuration (nginx -t)
 
 ### Git
-- `cb` : Nettoyage des branches locales supprimées du serveur
+- `cb` : Cleans up local branches deleted from the server
 - `ga` : git add
 - `gb` : git branch
-- `gc` : git switch (branches) ou git restore (fichiers/chemins)
+- `gc` : git switch (branches) or git restore (files/paths)
 - `gd` : git diff
 - `gf` : git fetch --all
 - `gr` : git reset
 - `gs` : git status
 - `gcom` : git commit
-- `glog [number]` : git log -n [number] (optionnel ; par défaut 1)
+- `glog [number]` : git log -n [number] (optional; default 1)
 - `gpull` : git pull
 - `gpush` : git push
 - `gmerge` : git merge
@@ -80,29 +80,29 @@ Puis fermer le WSL et le relancer.
 - `gx` : git update-index --chmod=+x
 
 ### Docker
-- `de <image_name> <tag>` : vérifie si l'image existe dans le votre registry perso
-- `dt <image_name> <tag>` : docker tag (avec vérification si le tag existe déjà)
-- `dtl <image_name> <tag>` : tag l'image avec le tag donné puis avec `latest`
-- `dp <image_name> <tag>` : docker push (avec vérification si le tag existe déjà dans le registry)
-- `dpl <image_name> <tag>` : push le tag donné puis `latest`
-- `dpush <image_name> <tag>` : alias de `dp`
-- `dpull <image_name> [tag]` : docker pull (tag par défaut: `latest`)
-- `dl` : liste les images du votre registry perso
-- `dl <image_name>` : liste les tags de l'image
+- `de <image_name> <tag>` : checks if the image exists in your personal registry
+- `dt <image_name> <tag>` : docker tag (checks if tag already exists)
+- `dtl <image_name> <tag>` : tags the image with the given tag then with `latest`
+- `dp <image_name> <tag>` : docker push (checks if tag already exists in registry)
+- `dpl <image_name> <tag>` : pushes the given tag then `latest`
+- `dpush <image_name> <tag>` : alias for `dp`
+- `dpull <image_name> [tag]` : docker pull (default tag: `latest`)
+- `dl` : lists images in your personal registry
+- `dl <image_name>` : lists tags for the image
 - `dcb <service_name> [service_name2 ...]` : docker compose build
-- `dcbnc <service_name> [service_name2 ...]` : docker compose build avec --no-cache
+- `dcbnc <service_name> [service_name2 ...]` : docker compose build with --no-cache
 - `dcu <service_name> [service_name2 ...]` : docker compose up -d
 - `dcund <service_name> [service_name2 ...]` : docker compose up -d --no-deps
-- `dstop <service_name> [service_name2 ...]` : docker compose stop (docker stop si en dehors d'un projet avec compose)
+- `dstop <service_name> [service_name2 ...]` : docker compose stop (docker stop if outside a compose project)
 - `ddown <service_name> [service_name2 ...]` : docker compose down
-- `dkill <service_name> [service_name2 ...]` : docker compose kill (docker kill si en dehors d'un projet avec compose)
-- `dps [args ...]` : docker compose ps (docker ps si en dehors d'un projet avec compose)
+- `dkill <service_name> [service_name2 ...]` : docker compose kill (docker kill if outside a compose project)
+- `dps [args ...]` : docker compose ps (docker ps if outside a compose project)
 - `dlogs <container_name_or_id>` : docker logs --follow
 - `dexec <container_name_or_id> [args ...]` : docker exec
-- `dx <container_name_or_id> [args ...]` : alias de `dexec`
+- `dx <container_name_or_id> [args ...]` : alias for `dexec`
 
 ### Unix-like (Powershell)
-- `which [-as] <command> [command ...]` : affiche le chemin d'une commande comme l'equivalent unix (`-a`: toutes les correspondances, `-s`: silencieux)
-- `grep [-ivnrlcwxFEs] <pattern> [file ...]` : recherche un motif (options courantes: `-i`, `-v`, `-n`, `-r`, `-l`, `-c`, `-w`, `-x`, `-F`, `-E`, `-s`)
-- `head [-n N] [file ...]` : affiche les premieres lignes (10 par defaut)
-- `tail [-n N] [-f] [file ...]` : affiche les dernieres lignes et suit les ajouts avec `-f`
+- `which [-as] <command> [command ...]` : shows the path of a command like the unix equivalent (`-a`: all matches, `-s`: silent)
+- `grep [-ivnrlcwxFEs] <pattern> [file ...]` : searches for a pattern (common options: `-i`, `-v`, `-n`, `-r`, `-l`, `-c`, `-w`, `-x`, `-F`, `-E`, `-s`)
+- `head [-n N] [file ...]` : shows the first lines (10 by default)
+- `tail [-n N] [-f] [file ...]` : shows the last lines and follows new additions with `-f`

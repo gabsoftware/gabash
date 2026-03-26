@@ -93,23 +93,23 @@ if [[ -z "${__GABASH_INTERNAL_LOADED:-}" ]]; then
       nginx)
         cat <<'EONGINX'
 ### Nginx
-- ngr : Redemarre le service nginx
-- ngt : Verifie la configuration du service nginx (nginx -t)
+- ngr : Restarts the nginx service
+- ngt : Checks the nginx configuration (nginx -t)
 EONGINX
         ;;
       git)
         cat <<'EOGIT'
 ### Git
-- cb : Nettoyage des branches locales supprimees du serveur
+- cb : Cleans up local branches deleted from the server
 - ga : git add
 - gb : git branch
-- gc : git switch (branches) ou git restore (fichiers/chemins)
+- gc : git switch (branches) or git restore (files/paths)
 - gd : git diff
 - gf : git fetch --all
 - gr : git reset
 - gs : git status
 - gcom : git commit
-- glog [number] : git log -n [number] (optionnel ; par defaut 1)
+- glog [number] : git log -n [number] (optional; default 1)
 - gpull : git pull
 - gpush : git push
 - gmerge : git merge
@@ -120,26 +120,26 @@ EOGIT
       docker)
         cat <<'EODOCKER'
 ### Docker
-- de <image_name> <tag> : verifie si l'image existe dans le votre registry perso
-- dt <image_name> <tag> : docker tag (avec verification si le tag existe deja)
-- dtl <image_name> <tag> : tag l'image avec le tag donne puis avec latest
-- dp <image_name> <tag> : docker push (avec verification si le tag existe deja dans le registry)
-- dpl <image_name> <tag> : push le tag donne puis latest
-- dpush <image_name> <tag> : alias de dp
-- dpull <image_name> [tag] : docker pull (tag par defaut: latest)
-- dl : liste les images du votre registry perso
-- dl <image_name> : liste les tags de l'image
+- de <image_name> <tag> : checks if the image exists in your personal registry
+- dt <image_name> <tag> : docker tag (checks if tag already exists)
+- dtl <image_name> <tag> : tags the image with the given tag then with latest
+- dp <image_name> <tag> : docker push (checks if tag already exists in registry)
+- dpl <image_name> <tag> : pushes the given tag then latest
+- dpush <image_name> <tag> : alias for dp
+- dpull <image_name> [tag] : docker pull (default tag: latest)
+- dl : lists images in your personal registry
+- dl <image_name> : lists tags for the image
 - dcb <service_name> [service_name2 ...] : docker compose build
-- dcbnc <service_name> [service_name2 ...] : docker compose build avec --no-cache
+- dcbnc <service_name> [service_name2 ...] : docker compose build with --no-cache
 - dcu <service_name> [service_name2 ...] : docker compose up -d
 - dcund <service_name> [service_name2 ...] : docker compose up -d --no-deps
-- dstop <service_name> [service_name2 ...] : docker compose stop (docker stop si en dehors d'un projet avec compose)
+- dstop <service_name> [service_name2 ...] : docker compose stop (docker stop if outside a compose project)
 - ddown <service_name> [service_name2 ...] : docker compose down
-- dkill <service_name> [service_name2 ...] : docker compose kill (docker kill si en dehors d'un projet avec compose)
-- dps [args ...] : docker compose ps (docker ps si en dehors d'un projet avec compose)
+- dkill <service_name> [service_name2 ...] : docker compose kill (docker kill if outside a compose project)
+- dps [args ...] : docker compose ps (docker ps if outside a compose project)
 - dlogs <container_name_or_id> : docker logs --follow
 - dexec <container_name_or_id> [args ...] : docker exec
-- dx <container_name_or_id> [args ...] : alias de dexec
+- dx <container_name_or_id> [args ...] : alias for dexec
 EODOCKER
         ;;
     esac
@@ -155,22 +155,22 @@ EODOCKER
       gabash)
         module="internal"
         usage="gabash --help [command] | gabash --version"
-        description="commande interne gabash"
+        description="gabash internal command"
         ;;
       ngr)
         module="nginx"
         usage="ngr"
-        description="Redemarre le service nginx"
+        description="Restarts the nginx service"
         ;;
       ngt)
         module="nginx"
         usage="ngt"
-        description="Verifie la configuration du service nginx (nginx -t)"
+        description="Checks the nginx configuration (nginx -t)"
         ;;
       cb)
         module="git"
         usage="cb"
-        description="Nettoyage des branches locales supprimees du serveur"
+        description="Cleans up local branches deleted from the server"
         ;;
       ga)
         module="git"
@@ -185,7 +185,7 @@ EODOCKER
       gc)
         module="git"
         usage="gc <branch_or_path> [args ...]"
-        description="git switch (branches) ou git restore (fichiers/chemins)"
+        description="git switch (branches) or git restore (files/paths)"
         ;;
       gd)
         module="git"
@@ -215,7 +215,7 @@ EODOCKER
       glog)
         module="git"
         usage="glog [number]"
-        description="git log -n [number] (optionnel ; par defaut 1)"
+        description="git log -n [number] (optional; default 1)"
         ;;
       gpull)
         module="git"
@@ -245,42 +245,42 @@ EODOCKER
       de)
         module="docker"
         usage="de <image_name> <tag>"
-        description="verifie si l'image existe dans le votre registry perso"
+        description="checks if the image exists in your personal registry"
         ;;
       dt)
         module="docker"
         usage="dt <image_name> <tag>"
-        description="docker tag (avec verification si le tag existe deja)"
+        description="docker tag (checks if tag already exists)"
         ;;
       dtl)
         module="docker"
         usage="dtl <image_name> <tag>"
-        description="tag l'image avec le tag donne puis avec latest"
+        description="tags the image with the given tag then with latest"
         ;;
       dp)
         module="docker"
         usage="dp <image_name> <tag>"
-        description="docker push (avec verification si le tag existe deja dans le registry)"
+        description="docker push (checks if tag already exists in registry)"
         ;;
       dpl)
         module="docker"
         usage="dpl <image_name> <tag>"
-        description="push le tag donne puis latest"
+        description="pushes the given tag then latest"
         ;;
       dpush)
         module="docker"
         usage="dpush <image_name> <tag>"
-        description="alias de dp"
+        description="alias for dp"
         ;;
       dpull)
         module="docker"
         usage="dpull <image_name> [tag]"
-        description="docker pull (tag par defaut: latest)"
+        description="docker pull (default tag: latest)"
         ;;
       dl)
         module="docker"
         usage="dl [image_name]"
-        description="liste les images du votre registry perso ou les tags d'une image"
+        description="lists images in your personal registry or tags for an image"
         ;;
       dcb)
         module="docker"
@@ -290,7 +290,7 @@ EODOCKER
       dcbnc)
         module="docker"
         usage="dcbnc <service_name> [service_name2 ...]"
-        description="docker compose build avec --no-cache"
+        description="docker compose build with --no-cache"
         ;;
       dcu)
         module="docker"
@@ -305,7 +305,7 @@ EODOCKER
       dstop)
         module="docker"
         usage="dstop <service_name> [service_name2 ...]"
-        description="docker compose stop (docker stop si en dehors d'un projet avec compose)"
+        description="docker compose stop (docker stop if outside a compose project)"
         ;;
       ddown)
         module="docker"
@@ -315,12 +315,12 @@ EODOCKER
       dkill)
         module="docker"
         usage="dkill <service_name> [service_name2 ...]"
-        description="docker compose kill (docker kill si en dehors d'un projet avec compose)"
+        description="docker compose kill (docker kill if outside a compose project)"
         ;;
       dps)
         module="docker"
         usage="dps [args ...]"
-        description="docker compose ps (docker ps si en dehors d'un projet avec compose)"
+        description="docker compose ps (docker ps if outside a compose project)"
         ;;
       dlogs)
         module="docker"
@@ -335,7 +335,7 @@ EODOCKER
       dx)
         module="docker"
         usage="dx <container_name_or_id> [args ...]"
-        description="alias de dexec"
+        description="alias for dexec"
         ;;
 *)
         echo "Unknown command: $command"
@@ -358,7 +358,7 @@ EODOCKER
   }
 
   __gabash_print_help() {
-    echo "gabash: fonctions pratiques pour bash et powershell."
+    echo "gabash: handy functions for bash and powershell."
     echo ""
     echo "Usage: gabash --help [command] | gabash --version"
     echo ""

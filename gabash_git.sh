@@ -5,15 +5,15 @@ fi
 __gabash_register_module "git"
 unset __GABASH_SCRIPT_DIR
 
-#### raccourcis pour travailler avec Git
+#### shortcuts for working with Git
 
 function cb() {
-  echo "Nettoyage des branches locales supprimées du serveur..."
+  echo "Cleaning up local branches deleted from the server..."
   git fetch --prune && for branch in \
     $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | \
     awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); \
     do git branch -D $branch; done
-  echo "Nettoyage terminé !"
+  echo "Cleanup done!"
 }
 
 function gb() {
@@ -68,7 +68,7 @@ function gmerge() {
 function gc() {
   if [[ -z "$1" ]]
   then
-    echo "Paramètre manquant : répertoire(s), fichier(s) ou nom de branche"
+    echo "Missing parameter: directory/directories, file(s), or branch name"
   else
     local has_path_arg=0
     local has_explicit_separator=0
@@ -105,7 +105,7 @@ function glog() {
 function ga() {
   if [[ -z "$1" ]]
   then
-    echo "Paramètre manquant : répertoire(s) ou fichier(s)"
+    echo "Missing parameter: directory/directories or file(s)"
   else
     git add "$@"
   fi
@@ -115,7 +115,7 @@ function ga() {
 function gcom() {
   if [[ -z "$1" ]]
   then
-    echo "Paramètre manquant : message"
+    echo "Missing parameter: message"
   else
     git commit -m "$*"
   fi
@@ -125,7 +125,7 @@ function gcom() {
 function gr() {
   if [[ -z "$1" ]]
   then
-    echo "Paramètre manquant : répertoire(s) ou fichier(s)"
+    echo "Missing parameter: directory/directories or file(s)"
   else
     git reset "$@"
   fi
@@ -134,7 +134,7 @@ function gr() {
 
 function gclean() {
   if [[ "$1" != "--confirm" ]]; then
-    echo "Refus: gclean requires --confirm"
+    echo "Refused: gclean requires --confirm"
     return 1
   fi
 
@@ -145,7 +145,7 @@ function gclean() {
 function  gx() {
   if [[ -z "$1" ]]
   then
-    echo "Paramètre manquant : répertoire(s) ou fichier(s)"
+    echo "Missing parameter: directory/directories or file(s)"
   else
     git update-index --chmod=+x "$@"
   fi
