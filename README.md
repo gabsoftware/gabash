@@ -62,6 +62,7 @@ Then close WSL and reopen it.
 - `ngr` : Restarts the nginx service
 - `ngt` : Checks the nginx configuration (nginx -t)
 - `ngs` : Shows the nginx service status
+- `ngv` : Shows the nginx version
 
 ### Git
 - `cb` : Cleans up local branches deleted from the server

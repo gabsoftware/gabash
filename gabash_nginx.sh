@@ -15,6 +15,7 @@ function __nginx_has_systemctl() {
   [ -x /usr/bin/systemctl ]
 }
 
+# Restart nginx
 function ngr() {
   if __nginx_has_service; then
     if sudo service nginx status > /dev/null 2>&1; then
@@ -32,10 +33,12 @@ function ngr() {
   fi
 }
 
+# Test nginx configuration
 function ngt() {
   sudo nginx -t
 }
 
+# Show nginx status
 function ngs() {
   if __nginx_has_service; then
     sudo service nginx status
@@ -47,3 +50,7 @@ function ngs() {
   fi
 }
 
+# Show nginx version
+function ngv() {
+  nginx -v
+}
