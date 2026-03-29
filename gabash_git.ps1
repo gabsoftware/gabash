@@ -68,24 +68,19 @@ function gmerge {
     }
 }
 
-function gc {
+function gsb {
     if ($args.Count -eq 0) {
-        Write-Host "Missing parameter: directory/directories, file(s), or branch name"
+        Write-Host "Missing parameter: branch name"
     } else {
-        $hasExplicitSeparator = $args -contains "--"
-        $hasPathArg = $false
-        foreach ($arg in $args) {
-            if (Test-Path -LiteralPath $arg) {
-                $hasPathArg = $true
-                break
-            }
-        }
+        git switch @args
+    }
+}
 
-        if ($hasExplicitSeparator -or $hasPathArg) {
-            git restore @args
-        } else {
-            git switch @args
-        }
+function gr() {
+    if ($args.Count -eq 0) {
+        Write-Host "Missing parameter: directory/directories or file(s)"
+    } else {
+        git restore @args
     }
 }
 
@@ -117,7 +112,7 @@ function gcom {
     }
 }
 
-function gr {
+function grs {
     if ($args.Count -eq 0) {
         Write-Host "Missing parameter: directory/directories or file(s)"
     } else {

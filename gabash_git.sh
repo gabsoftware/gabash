@@ -65,30 +65,21 @@ function gmerge() {
   fi
 }
 
-function gc() {
+function gsb() {
   if [[ -z "$1" ]]
   then
-    echo "Missing parameter: directory/directories, file(s), or branch name"
+    echo "Missing parameter: branch name"
   else
-    local has_path_arg=0
-    local has_explicit_separator=0
-    local arg
-    for arg in "$@"; do
-      if [[ "$arg" == "--" ]]; then
-        has_explicit_separator=1
-        break
-      fi
-      if [[ -e "$arg" ]]; then
-        has_path_arg=1
-        break
-      fi
-    done
+    git switch "$@"
+  fi
+}
 
-    if [[ $has_explicit_separator -eq 1 || $has_path_arg -eq 1 ]]; then
-      git restore "$@"
-    else
-      git switch "$@"
-    fi
+function gr() {
+  if [[ -z "$1" ]]
+  then
+    echo "Missing parameter: directory/directories or file(s)"
+  else
+    git restore "$@"
   fi
 }
 
@@ -122,7 +113,7 @@ function gcom() {
 }
 
 
-function gr() {
+function grs() {
   if [[ -z "$1" ]]
   then
     echo "Missing parameter: directory/directories or file(s)"

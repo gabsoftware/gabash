@@ -41,10 +41,11 @@ if [[ -z "${__GABASH_INTERNAL_LOADED:-}" ]]; then
         echo "cb"
         echo "ga"
         echo "gb"
-        echo "gc"
+        echo "gsb"
         echo "gd"
         echo "gf"
         echo "gr"
+        echo "grs"
         echo "gs"
         echo "gcom"
         echo "glog"
@@ -107,10 +108,11 @@ EONGINX
 - cb : Cleans up local branches deleted from the server
 - ga : git add
 - gb : git branch
-- gc : git switch (branches) or git restore (files/paths)
+- gsb : git switch (branches)
 - gd : git diff
 - gf : git fetch --all
-- gr : git reset
+- gr : git restore (files/paths)
+- grs : git reset
 - gs : git status
 - gcom : git commit
 - glog [number] : git log -n [number] (optional; default 1)
@@ -196,10 +198,10 @@ EODOCKER
         usage="gb [args ...]"
         description="git branch"
         ;;
-      gc)
+      gsb)
         module="git"
-        usage="gc <branch_or_path> [args ...]"
-        description="git switch (branches) or git restore (files/paths)"
+        usage="gsb <branch> [args ...]"
+        description="git switch (branches)"
         ;;
       gd)
         module="git"
@@ -213,7 +215,12 @@ EODOCKER
         ;;
       gr)
         module="git"
-        usage="gr <args ...>"
+        usage="gr <path_or_file> [path_or_file2 ...]"
+        description="git restore (files/paths)"
+        ;;
+      grs)
+        module="git"
+        usage="grs <args ...>"
         description="git reset"
         ;;
       gs)

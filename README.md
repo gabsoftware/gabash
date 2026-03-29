@@ -68,10 +68,11 @@ Then close WSL and reopen it.
 - `cb` : Cleans up local branches deleted from the server
 - `ga` : git add
 - `gb` : git branch
-- `gc` : git switch (branches) or git restore (files/paths)
+- `gsb` : git switch (branches)
 - `gd` : git diff
 - `gf` : git fetch --all
-- `gr` : git reset
+- `gr` : git restore (files/paths)
+- `grs` : git reset
 - `gs` : git status
 - `gcom` : git commit
 - `glog [number]` : git log -n [number] (optional; default 1)
