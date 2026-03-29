@@ -34,6 +34,7 @@ if [[ -z "${__GABASH_INTERNAL_LOADED:-}" ]]; then
       nginx)
         echo "ngr"
         echo "ngt"
+        echo "ngs"
         ;;
       git)
         echo "cb"
@@ -95,6 +96,7 @@ if [[ -z "${__GABASH_INTERNAL_LOADED:-}" ]]; then
 ### Nginx
 - ngr : Restarts the nginx service
 - ngt : Checks the nginx configuration (nginx -t)
+- ngs : Shows the nginx service status
 EONGINX
         ;;
       git)
@@ -166,6 +168,11 @@ EODOCKER
         module="nginx"
         usage="ngt"
         description="Checks the nginx configuration (nginx -t)"
+        ;;
+      ngs)
+        module="nginx"
+        usage="ngs"
+        description="Shows the nginx service status"
         ;;
       cb)
         module="git"
